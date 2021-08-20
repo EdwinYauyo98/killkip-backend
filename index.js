@@ -38,5 +38,5 @@ app.get('/', function (req, res) {
 
 
 app.listen(app.get('port'), () => {
-  console.log('App listening on url http://localhost:' + config.port);
+  console.log('App listening on url http://localhost:' + app.get('port'));
 });
