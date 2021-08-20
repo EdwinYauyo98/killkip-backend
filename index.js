@@ -12,6 +12,10 @@ app.use(express.urlencoded({
 
 app.use('/api', userRoutes.routes);
 
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
 /////
 // var mysql      = require('mysql');
 // var conTest = mysql.createConnection({
