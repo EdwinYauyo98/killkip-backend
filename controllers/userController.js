@@ -1,13 +1,14 @@
 const db = require('../database');
 
-const conection = db();
+
+//const conection = db();
 
 const register = (req,res) =>{
-    const {nombre, apellido, email, password} = req.body;
-
-    conection.query('INSERT INTO USUARIOS SET?', {
-        nombre:nombre,
-        apellido:apellido,
+    const {name, lastname, email, password} = req.body;
+    db().connect();
+    db().query('INSERT INTO user SET?', {
+        name:name,
+        lastname:lastname,
         email:email,
         password:password
     }, (err, result) =>{
@@ -18,12 +19,14 @@ const register = (req,res) =>{
             console.log(err);
         }
     });
+
+    db().end();
 }
 
 const login = (req, res) =>{
     const {email, password} = req.body;
-
-    conection.query('SELECT * FROM USUARIOS WHERE email=? and password=?', [email, password],
+    db().connect();
+    db().query('SELECT * FROM user WHERE email=? and password=?', [email, password],
     (err,result) => {
         if(err)
             console.log(err);
@@ -31,15 +34,21 @@ const login = (req, res) =>{
             res.json("logeo exitoso");
             console.log(result);
         }
+        else
+        {
+            res.json("datos incorrectos");
+            console.log(result);
+        }
     });
+    db().end();
 }
 
 const edit = (req,res) =>{
-    const {nombre, apellido, email, password} = req.body;
-
-    conection.query('UPATE USUARIOS SET?', {
-        nombre:nombre,
-        apellido:apellido,
+    const {name, lastname, email, password} = req.body;
+    db().connect();
+    db().query('UPATE USUARIOS SET?', {
+        name:name,
+        lastname:lastname,
         email:email,
         password,password
     }+'WHERE email=?',email, (err,result) => {
@@ -50,6 +59,7 @@ const edit = (req,res) =>{
             console.log(err);
         }
     });
+    db().end();
 }
 
 

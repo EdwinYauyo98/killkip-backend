@@ -12,8 +12,24 @@ app.use(express.urlencoded({
 
 app.use('/api', userRoutes.routes);
 
-
-
+/////
+// var mysql      = require('mysql');
+// var conTest = mysql.createConnection({
+//   host     : '35.209.204.163',
+//   user     : 'u3r93gq4a5p9l',
+//   password : '2@Gj#34d21N3',
+//   database : 'dbverjyqgshgtb'
+// });
+ 
+// conTest.connect();
+ 
+// conTest.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+//   if (error) throw error;
+//   console.log('The solution is: ', results[0].solution);
+// });
+ 
+// conTest.end();
+////
 
 
 app.listen(config.port, () => {
