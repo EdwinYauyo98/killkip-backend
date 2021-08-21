@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "1f0f8818-92ad-47b8-98dc-bad932982c1a",
+		"name": "Backend Formulario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Debug backend funcionando",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/form",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apellidoP\": \"Aasd\",\r\n    \"apellidoM\": \"dueñas\",\r\n    \"nombres\": \"Hairton\",\r\n    \"fecha\": \"2002-12-09\",\r\n    \"desempeño\": {\r\n        \"cumplimiento\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"sentido_comun\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"orientacion_de_resultados\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"responsabilidad\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        }\r\n    },\r\n    \"factor_humano\": {\r\n        \"actitud_organizacion\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"actitud_equipo\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"actitud_colaboradores\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"predisposicion\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"puntualidad\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        }\r\n    },\r\n    \"habilidades\": {\r\n        \"respuesta\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"organizacion\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"potencial\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"iniciativa\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        }\r\n    },\r\n    \"calidad\": {\r\n        \"exactitud\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"grado_de_conocimiento\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"precision\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"relaciones_interpersonales\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"presentacion_personal\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        }\r\n    },\r\n    \"liderazgo\": {\r\n        \"coordinacion\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"cooperacion\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"capacidad\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"trabajo\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        },\r\n        \"creatividad\": {\r\n            \"colaborador\": 5,\r\n            \"encargado\": 5,\r\n            \"director\": 5\r\n        }\r\n    },\r\n    \"promedios\": {\r\n        \"eval_colaborador\": 5,\r\n        \"eval_jefe\": 5,\r\n        \"eval_gerente\": 5,\r\n        \"promedio_general\": 5\r\n    },\r\n    \"observaciones\": \"sin observaciones\",\r\n    \"firma\": \"firma123\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/form",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"form"
+					]
+				},
+				"description": "Envio de un formulario simple siguiendo las especificaciones dadas en el Miro"
+			},
+			"response": []
+		}
+	]
+}
