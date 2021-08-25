@@ -22,3 +22,9 @@
     "nodemon": "^2.0.10"
   }
 }
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdwinYauyo98/killkip-backend.git",
+  },
+
