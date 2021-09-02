@@ -6,7 +6,6 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const formRoutes = require('./routes/form.routes');
 const app = express();
-const fs = require('fs');
 
 //mongoDB Atlas Connection String
 mongoose.connect("mongodb+srv://edwin:uysDzkCAtA8u0TQ0@cluster0.9awkq.mongodb.net/test", {
@@ -18,10 +17,7 @@ mongoose.connect("mongodb+srv://edwin:uysDzkCAtA8u0TQ0@cluster0.9awkq.mongodb.ne
   .then(db => console.log("db is connected"))
   .catch(error => console.log(error))
 
-const puerto = process.env.PUERTO || 8000;
-app.listen(puerto, function(){
-    console.log("Servidor Ok en puerto:"+puerto);
-});
+app.set('port', process.env.PORT || 8080);
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
@@ -29,12 +25,8 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-/*app.get('/', function(req,res){
-    res.send('Ruta INICIO');
-});*/
-
-fs.readdirSync(`${__dirname}/routes`).map((file) => {
-  require(`./routes/${file}`)(app);
+app.get('/', function (req, res) {
+  res.send('Hello World!');
 });
 
 app.use('/api', userRoutes.routes);
@@ -42,22 +34,26 @@ app.use('/api', userRoutes.routes);
 app.use('/api/form', formRoutes);
 
 
+/////
+// var mysql      = require('mysql');
+// var conTest = mysql.createConnection({
+//   host     : '35.209.204.163',
+//   user     : 'u3r93gq4a5p9l',
+//   password : '2@Gj#34d21N3',
+//   database : 'dbverjyqgshgtb'
+// });
+
+// conTest.connect();
+
+// conTest.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+//   if (error) throw error;
+//   console.log('The solution is: ', results[0].solution);
+// });
+
+// conTest.end();
+////
+
+
 app.listen(app.get('port'), () => {
-  console.log('aplicacion en ejecucion o url http://localhost:' + app.get('port'));
+  console.log('App listening on url http://localhost:' + app.get('port'));
 });
-
-
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-});
-
-
-var corsOptions = {
-  origin: 'http://localhost:8000',
-  optionsSuccessStatus: 200 
-  methods: "GET, PUT, POST, OPTIONS, DELETE"
-}
