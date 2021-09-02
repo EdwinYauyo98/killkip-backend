@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const formRoutes = require('./routes/form.routes');
 const app = express();
 
+
 //mongoDB Atlas Connection String
 mongoose.connect("mongodb+srv://edwin:uysDzkCAtA8u0TQ0@cluster0.9awkq.mongodb.net/test", {
   useNewUrlParser: true,
@@ -55,5 +56,6 @@ app.use('/api/form', formRoutes);
 
 
 app.listen(app.get('port'), () => {
+  console.log('CORS-enabled web server listening on port ' + app.get('port'));
   console.log('App listening on url http://localhost:' + app.get('port'));
 });
