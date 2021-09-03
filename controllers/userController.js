@@ -1,5 +1,5 @@
 const pool = require('../database');
-
+const jwt = require('jsonwebtoken');
 
 //const conection = db();
 
@@ -38,8 +38,9 @@ const login = (req, res) =>{
             if(err)
                 console.log(err);
             if(result.length!==0){
-                res.json("logeo exitoso");
                 console.log(result);
+                const token = jwt.sign({email: email, password: password}, 'my_secret');
+                res.json({token}); 
             }
             else
             {
@@ -50,6 +51,17 @@ const login = (req, res) =>{
         });
     });
 
+}
+
+const out = (req, res) =>{
+    jwt.verify(req.token, 'my_secret', (err, data)=>{
+        if(err){
+            res.sendStatus(403);
+            //console.log("1");
+        } else{
+            res.json({text: 'protected'});
+        }
+    });
 }
 
 const edit = (req,res) =>{
@@ -75,9 +87,28 @@ const edit = (req,res) =>{
     });
 }
 
+// middleware
+
+function ensureToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+
+    if (typeof bearerHeader !== 'undefined'){
+        const bearer = bearerHeader.split(" ");
+        const bearerToken = bearer[1];
+        //console.log(bearerToken);
+        req.token = bearerToken;
+        next()
+    }
+    else{
+        res.sendStatus(403);
+    }
+}
+
 
 module.exports = {
     register,
     login,
-    edit
+    edit,
+    ensureToken,
+    out
 }
