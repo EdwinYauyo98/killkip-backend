@@ -12,8 +12,6 @@ const register = (req,res) =>{
 
         connection.query('SELECT * FROM user WHERE email=? and password=?', [email, password],
         (err,result) => {
-            email = email.trim();
-
 
             if(err)
                 console.log(err);
@@ -28,7 +26,7 @@ const register = (req,res) =>{
                 connection.query('INSERT INTO user SET?', {
                     name:name,
                     lastname:lastname,
-                    email:email,
+                    email:email.trim(),
                     password:password
                 }, (err, result) =>{
                     if(!err){
@@ -67,11 +65,10 @@ const login = (req, res) =>{
     const {email, password} = req.body;
     pool().getConnection(function (err, connection){
 
-        email = email.trim();
 
         if(err) throw err;
 
-        connection.query('SELECT * FROM user WHERE email=? and password=?', [email, password],
+        connection.query('SELECT * FROM user WHERE email=? and password=?', [email.trim(), password],
         (err,result) => {
             if(err)
                 console.log(err);
@@ -94,15 +91,13 @@ const edit = (req,res) =>{
     const {id_user, name, lastname, email, password} = req.body;
     pool().getConnection(function (err,connection){
 
-        email = email.trim();
-        
         if (err){
             console.log(err);
             throw err;
         }
 
         connection.query('UPDATE user SET id_user=?, name=?, lastname=?, email=?, password=? WHERE id_user=?', 
-            [id_user, name, lastname, email, password, id_user], (err,result) => {
+            [id_user, name, lastname, email.trim(), password, id_user], (err,result) => {
             if(!err){
                 res.json("usuario actualizado");
             } else{
