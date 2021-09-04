@@ -12,6 +12,9 @@ const register = (req,res) =>{
 
         connection.query('SELECT * FROM user WHERE email=? and password=?', [email, password],
         (err,result) => {
+            email = email.trim();
+
+
             if(err)
                 console.log(err);
             if(result.length!==0){
@@ -64,6 +67,8 @@ const login = (req, res) =>{
     const {email, password} = req.body;
     pool().getConnection(function (err, connection){
 
+        email = email.trim();
+
         if(err) throw err;
 
         connection.query('SELECT * FROM user WHERE email=? and password=?', [email, password],
@@ -89,6 +94,8 @@ const edit = (req,res) =>{
     const {id_user, name, lastname, email, password} = req.body;
     pool().getConnection(function (err,connection){
 
+        email = email.trim();
+        
         if (err){
             console.log(err);
             throw err;
