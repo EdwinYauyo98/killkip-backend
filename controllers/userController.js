@@ -9,21 +9,54 @@ const register = (req,res) =>{
 
         if(err) throw err;
 
-        connection.query('INSERT INTO user SET?', {
-            name:name,
-            lastname:lastname,
-            email:email,
-            password:password
-        }, (err, result) =>{
-            if(!err){
-                res.json("usuario añadido")
-            }else{
-                res.json("usuario no añadido");
-                console.log(err);
-            }
 
+        connection.query('SELECT * FROM user WHERE email=? and password=?', [email, password],
+        (err,result) => {
+            if(err)
+                console.log(err);
+            if(result.length!==0){
+                //correo existente
+                res.json("Éste correo está en uso");
+                console.log(result);
+            }
+            else
+            {
+                //correo nuevo
+                connection.query('INSERT INTO user SET?', {
+                    name:name,
+                    lastname:lastname,
+                    email:email,
+                    password:password
+                }, (err, result) =>{
+                    if(!err){
+                        res.json("usuario añadido")
+                    }else{
+                        res.json("usuario no añadido");
+                        console.log(err);
+                    }
+        
+                    connection.release();
+                });
+                //console.log(result);
+            }
             connection.release();
         });
+
+        // connection.query('INSERT INTO user SET?', {
+        //     name:name,
+        //     lastname:lastname,
+        //     email:email,
+        //     password:password
+        // }, (err, result) =>{
+        //     if(!err){
+        //         res.json("usuario añadido")
+        //     }else{
+        //         res.json("usuario no añadido");
+        //         console.log(err);
+        //     }
+
+        //     connection.release();
+        // });
     });
 }
 
