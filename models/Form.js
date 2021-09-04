@@ -6,6 +6,7 @@ const formSchema = new Schema({
     apellidoP: String,
     apellidoM: String,
     nombres: String,
+    cargo:String,
     fecha: Date,
     desempeño: {
         cumplimiento: {
