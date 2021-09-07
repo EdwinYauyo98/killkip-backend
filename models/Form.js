@@ -1,12 +1,12 @@
 // import { Schema, model } from "mongoose";
 const mongoose = require('mongoose');
-mongoose.Promise=global.Promise;
+mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 const formSchema = new Schema({
     apellidoP: String,
     apellidoM: String,
     nombres: String,
-    cargo:String,
+    cargo: String,
     fecha: Date,
     desempeño: {
         cumplimiento: {
@@ -435,10 +435,13 @@ const formSchema = new Schema({
         type: String,
         maxLength: 500
     },
-    firma: {
-        type: String,required: true
+    dni: {
+        type: String, required: true
+    },
+    id: {
+        type: String, required: true
     }
 })
 
-const Form = mongoose.model('Form',formSchema);
-module.exports= Form;
+const Form = mongoose.model('Form', formSchema);
+module.exports = Form;
