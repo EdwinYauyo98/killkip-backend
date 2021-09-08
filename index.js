@@ -19,7 +19,9 @@ mongoose.connect("mongodb+srv://edwin:uysDzkCAtA8u0TQ0@cluster0.9awkq.mongodb.ne
   .catch(error => console.log(error))
 
 app.set('port', process.env.PORT || 8080);
-app.use(cors());
+app.use(cors({
+  origin:'*'
+}));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
