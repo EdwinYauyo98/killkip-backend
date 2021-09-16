@@ -1,7 +1,7 @@
 {
   "name": "killkip-backend-local",
   "version": "1.0.0",
-  "description": "",
+  "description": "Requerimientos :\r - Mongo Compass\r - Postman\r - Visual Studio Code\r - NodeJS",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -15,10 +15,12 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.7",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.10",
     "request": "^2.88.2"
-  }
+  },
+  "devDependencies": {}
 }
